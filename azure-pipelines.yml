@@ -19,3 +19,24 @@ stages:
         backendAzureRmStorageAccountName: 'ankitsgmodule'
         backendAzureRmContainerName: 'statefile'
         backendAzureRmKey: 'module.tfstate'
+    - task: TerraformTask@5
+      displayName: plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'ModuleSC'
+- stage: Manual
+  displayName: ManualApproval
+  dependsOn: terraformrunning
+  jobs:
+  - job: WaitForApproval
+    displayName: ManualValidation
+    pool: server
+    steps:
+    - task: ManualValidation@0
+      inputs:
+        notifyUsers: 'kumar.ankit821@gmail.com'
+        instructions: 'Check the plan'
+        onTimeout: 'resume'
+
+
