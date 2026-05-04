@@ -7,14 +7,14 @@ stages:
   - job: 
     displayName: Terraforminstall
     steps:
-    - task: TerraformInstaller@0
+    - task: TerraformInstaller@1
       inputs:
         terraformVersion: 'latest'
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)Parent_Module'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
         backendServiceArm: 'ModuleSC'
         backendAzureRmStorageAccountName: 'ankitsgmodule'
         backendAzureRmContainerName: 'statefile'
@@ -37,6 +37,6 @@ stages:
       inputs:
         notifyUsers: 'kumar.ankit821@gmail.com'
         instructions: 'Check the plan'
-        onTimeout: 'resume'
+        onTimeout: 'reject'
 
 
