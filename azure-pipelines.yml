@@ -46,18 +46,10 @@ stages:
     displayName: Apply
     pool: ModuleAgent
     steps:
-    - task: TerraformInstaller@1
-      inputs:
-        terraformVersion: 'latest'
-    - task: TerraformTask@5
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
-        backendServiceArm: 'ModuleSC'
-        backendAzureRmStorageAccountName: 'ankitsgmodule'
-        backendAzureRmContainerName: 'statefile'
-        backendAzureRmKey: 'module.tfstate'
+    - template: templates/terraform-common.yml
+      parameters:
+        workingDir: '$(System.DefaultWorkingDirectory)/Parent_Module'
+        serviceConnection: 'ModuleSC'
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
