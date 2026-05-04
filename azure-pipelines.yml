@@ -2,10 +2,10 @@ trigger: none
 pool:
   name: ModuleAgent
 stages:
-- stage: terraform running
+- stage: terraformrunning
   jobs:
   - job: 
-    displayName: Terraform install
+    displayName: Terraforminstall
     steps:
     - task: TerraformInstaller@1
       inputs:
