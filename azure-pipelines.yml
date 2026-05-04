@@ -20,10 +20,10 @@ stages:
         backendAzureRmContainerName: 'statefile'
         backendAzureRmKey: 'module.tfstate'
     - task: TerraformTask@5
-      displayName: plan
       inputs:
         provider: 'azurerm'
         command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/Parent_Module'
         environmentServiceNameAzureRM: 'ModuleSC'
 - stage: Manual
   displayName: ManualApproval
