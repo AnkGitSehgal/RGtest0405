@@ -11,10 +11,10 @@ stages:
       inputs:
         terraformVersion: 'latest'
     - task: TerraformTask@5
-      displayName: terrafomrinit
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)Parent_Module'
         backendServiceArm: 'ModuleSC'
         backendAzureRmStorageAccountName: 'ankitsgmodule'
         backendAzureRmContainerName: 'statefile'
