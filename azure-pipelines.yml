@@ -1,0 +1,12 @@
+trigger: none
+pool:
+  name: ModuleAgent
+stages:
+- stage: terraform running
+  jobs:
+  - job: 
+    displayName: Terraform install
+    steps:
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: 'latest'
