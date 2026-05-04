@@ -11,6 +11,12 @@ RG_Parents = {
 
   }
 
+  rg3 = {
+    name     = "RG3"
+    location = "West US"
+
+  }
+
 }
 
 # virtual = {
