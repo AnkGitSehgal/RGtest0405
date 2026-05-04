@@ -1,2 +1,2 @@
 variable "RG_Parents" {}
-variable "virtual" {}
+# variable "virtual" {}
